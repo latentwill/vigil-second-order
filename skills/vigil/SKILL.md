@@ -212,9 +212,32 @@ If no trail appears, no vigil ran. That's the contract.
 - Trivial responses (greetings, "yes", "thanks", simple lookups) where vigil didn't activate. If vigil didn't activate, no trail.
 - The trail is for vigil-touched responses only. It is not a signature.
 
-## Anti-Shortcutting (Self-Check)
+## Anti-Shortcutting
 
-The Twin and Trail are the easiest things in this skill to fake. Before delivering, scan the trail you're about to emit for these tells. Each is a sign you wrote a vigil-flavored response without running vigil.
+Two failure modes share the same name. Both are scanned before delivery. Either fires → revise.
+
+### Response-content shortcuts (the answer itself is the shortcut)
+
+These are the most common and the most consequential. The user reads the response and gets less value than they could have, because the response substituted a low-effort move for the high-effort one. Your draft is shortcutting if any of these apply:
+
+| Tell | What's missing | Fix |
+|---|---|---|
+| **"It depends"** with no variables named | The conditional structure | "Depends on X and Y. If X = A, then ...; if Y = B, then ..." |
+| **List of options without a recommendation** when the user asked for a recommendation | A pick + a reason | Rank, mark the winner with `★`, name the trade you're making |
+| **"Both have tradeoffs"** with no weighing | The weighing for *this* user | Apply the weighing to their specific situation; don't punt |
+| **Hedge without a scenario** ("could potentially", "might in some cases") | The cases | Name the case or drop the hedge |
+| **Generic best-practices** when the user has specific context | The context-specific application | Translate the principle into their concrete situation |
+| **Restating the question as the answer** ("your goal is X, so do X") | The bridge from goal to action | Decompose the goal into specific moves |
+| **"You might want to research further"** / "consider..." | The work you should have done | Investigation Gate. Do the research, then answer. |
+| **Verbosity as substitute for substance** | A signal-to-noise pass | Cut everything that doesn't earn its line. |
+| **Bullet-list dump where synthesis was asked** | The synthesis | Bullet lists are inputs to thinking, not outputs of it. Synthesize. |
+| **Wikipedia-tier answer in an expert domain** | The expert-level move | If the domain implied expertise, the surface-level answer is a shortcut. |
+| **Repeating user's framing back as confirmation** | An independent read | The user came to you for a different angle. Provide it. |
+| **"This is complex; here's an overview"** when they asked for a specific answer | The specific answer | The Cardinal Rule's frustration test catches this. |
+
+### Vigil-process shortcuts (the apparatus is the shortcut)
+
+The Twin and Trail are the easiest mechanisms in this skill to fake. Scan the trail you're about to emit:
 
 | Tell | Diagnosis |
 |---|---|
@@ -225,9 +248,9 @@ The Twin and Trail are the easiest things in this skill to fake. Before deliveri
 | `audit: shipped` but no `Agent` tool call appears in this turn | The twin never ran. Either spawn it or set `audit: (not spawned: <reason>)`. |
 | Reframe says `confirmed` but your response is the obvious-pattern answer | Reframe wasn't actually performed. Either find an alternative or write `skipped`. |
 | `temporal: 3 steps forward` but no specific consequences are surfaced | Generic depth claim. Name a real downstream effect or shorten the chain. |
-| Auditor's verdict line and your response disagree (auditor says "wrong frame" but you delivered the original frame anyway) | Twin ran but you ignored it. Revise or document why you overrode (rare; needs a sentence). |
+| Auditor's verdict line and your response disagree | Twin ran but you ignored it. Revise or document why you overrode (rare; needs a sentence). |
 
-If any tell fires, you didn't run vigil — you wrote a vigil-flavored response. Either complete the missing step or strip the trail. **Trail-without-vigil is worse than no trail**: it lies to the user.
+If any tell from either table fires, you didn't run vigil — you wrote a vigil-flavored response. Either complete the missing step / strip the shortcut, or strip the trail. **Trail-without-vigil is worse than no trail**: it lies to the user.
 
 ## Escalation
 
